@@ -35,15 +35,120 @@
     <div class="wrapper" id="app">
       <!-- Colonna contatti -->
       <div class="col-contact">
-        <div class="wrapper-header"></div>
+        <div class="wrapper-header">
+          <div>
+            <img src="./img/avatar_io.jpg" alt="" class="user-image mx-2" />
+          </div>
+          <div class="flex-grow-1">
+            <h5 class="mb-0">Sofia</h5>
+          </div>
+          <div>
+            <i class="fa-solid fa-circle-notch fa-xl me-3"></i>
+            <i class="fa-solid fa-message fa-xl me-3"></i>
+            <i class="fa-solid fa-ellipsis-vertical fa-xl me-3"></i>
+          </div>
+        </div>
+
         <div class="contact-notification"></div>
         <div class="contact-search"></div>
-        <div class="contact-list"></div>
+        <div class="contact-list">
+          <ul class="p-0">
+            <li v-for="contact in contacts">
+              <div>
+                <img :src="contact.avatar" alt="" class="user-image" />
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <h5 class="mb-0">{{ contact.name }}</h5>
+                <p class="mb-0">message</p>
+              </div>
+              <div>
+                <span>12:00</span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <!-- Colonna messaggi -->
       <div class="col-message">
-        <div class="wrapper-header"></div>
-        <div class="chat-body"></div>
+        <div class="wrapper-header">
+          <div>
+            <img src="./img/avatar_io.jpg" alt="" class="user-image mx-2" />
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <h5 class="mb-0">Sofia</h5>
+            <p class="mb-0">text</p>
+          </div>
+          <div>
+            <i class="fa-solid fa-magnifying-glass fa-xl me-3"></i>
+            <i class="fa-solid fa-paperclip fa-xl me-3"></i>
+            <i class="fa-solid fa-ellipsis-vertical fa-xl me-3"></i>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="message">
+            <div class="box-message sent">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+                aut nam est omnis modi, dolores officia deleniti eos temporibus
+                quisquam ad odit autem. Dolore sequi nemo doloremque alias
+                vitae. Pariatur.
+              </p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message received">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message received">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                sequi nemo doloremque alias vitae. Pariatur.
+              </p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message sent">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+                aut nam est omnis modi, dolores officia deleniti eos temporibus
+                quisquam ad odit autem. Dolore sequi nemo doloremque alias
+                vitae. Pariatur.
+              </p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message received">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message received">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                sequi nemo doloremque alias vitae. Pariatur.
+              </p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message sent">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
+                aut nam est omnis modi, dolores officia deleniti eos temporibus
+                quisquam ad odit autem. Dolore sequi nemo doloremque alias
+                vitae. Pariatur.
+              </p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message received">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+              <div><span>12.00</span></div>
+            </div>
+            <div class="box-message received">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+                sequi nemo doloremque alias vitae. Pariatur.
+              </p>
+              <div><span>12.00</span></div>
+            </div>
+          </div>
+        </div>
         <div class="input-message"></div>
       </div>
     </div>

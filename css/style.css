@@ -24,17 +24,30 @@
 /* COLONNA CONTATTI */
 
 .col-contact {
-  width: 25%;
+  width: 30%;
   border-right: 1px solid #b9b9b9;
 }
 
 .col-message {
-  width: 75%;
+  width: 70%;
 }
 
 .wrapper-header {
   background-color: #eaeaea;
   height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #b1b1b1;
+}
+
+h5 {
+  color: black;
+}
+
+.user-image {
+  width: 50px;
+  border-radius: 50%;
 }
 
 .contact-notification {
@@ -50,6 +63,21 @@
 .contact-list {
   background-color: white;
   height: calc(95vh - 200px);
+  overflow: auto;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 10px;
+  border-top: 1px solid #e9ebeb;
+}
+
+.contact-list li:hover {
+  cursor: pointer;
+  background-color: #e9ebeb;
 }
 
 /* COLONNA MESSAGGI */
@@ -57,6 +85,43 @@
 .chat-body {
   background-image: url(../img/mine.jpg);
   height: calc(95vh - 140px);
+  display: flex;
+  justify-content: center;
+}
+
+.message {
+  width: 100%;
+  padding: 30px;
+  max-height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 15px;
+  overflow: auto;
+}
+
+.box-message {
+  max-width: 45%;
+  max-height: 220px;
+  border-radius: 10px;
+  padding: 10px 10px 0 10px;
+  align-self: flex-start;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.box-message.sent {
+  background-color: #d5f9ba;
+  align-self: flex-end;
+}
+
+.box-message.received {
+  background-color: white;
+}
+
+.box-message span {
+  font-size: 0.7rem;
 }
 
 .input-message {

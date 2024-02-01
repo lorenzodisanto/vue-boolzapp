@@ -1,0 +1,65 @@
+/* # RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  background-color: #d9dbd5;
+}
+
+.wrapper {
+  height: 95vh;
+  width: 70%;
+  display: flex;
+}
+
+/* COLONNA CONTATTI */
+
+.col-contact {
+  width: 25%;
+  border-right: 1px solid #b9b9b9;
+}
+
+.col-message {
+  width: 75%;
+}
+
+.wrapper-header {
+  background-color: #eaeaea;
+  height: 70px;
+}
+
+.contact-notification {
+  background-color: #8edafc;
+  height: 80px;
+}
+
+.contact-search {
+  background-color: #fcfcfc;
+  height: 50px;
+}
+
+.contact-list {
+  background-color: white;
+  height: calc(95vh - 200px);
+}
+
+/* COLONNA MESSAGGI */
+
+.chat-body {
+  background-image: url(../img/mine.jpg);
+  height: calc(95vh - 140px);
+}
+
+.input-message {
+  background-color: #f3eeea;
+  height: 70px;
+}

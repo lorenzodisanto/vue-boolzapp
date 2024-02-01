@@ -64,6 +64,7 @@ h5 {
   background-color: white;
   height: calc(95vh - 200px);
   overflow: auto;
+  color: #b1b1b1;
 }
 
 .contact-list li {
@@ -91,7 +92,7 @@ h5 {
 
 .message {
   width: 100%;
-  padding: 30px;
+  padding: 50px;
   max-height: 100%;
   display: flex;
   justify-content: flex-start;

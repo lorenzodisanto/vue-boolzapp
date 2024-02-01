@@ -51,15 +51,17 @@
 
         <div class="contact-notification"></div>
         <div class="contact-search"></div>
+
+        <!-- Lista Contatti -->
         <div class="contact-list">
           <ul class="p-0">
-            <li v-for="contact in contacts">
+            <li v-for="(contact, index) in contacts" @click="showChat(index)">
               <div>
                 <img :src="contact.avatar" alt="" class="user-image" />
               </div>
               <div class="flex-grow-1 ms-3">
                 <h5 class="mb-0">{{ contact.name }}</h5>
-                <p class="mb-0">message</p>
+                <p class="mb-0">Ultimo messaggio inviato</p>
               </div>
               <div>
                 <span>12:00</span>
@@ -73,11 +75,15 @@
       <div class="col-message">
         <div class="wrapper-header">
           <div>
-            <img src="./img/avatar_io.jpg" alt="" class="user-image mx-2" />
+            <img
+              :src="contacts[activeContact].avatar"
+              alt=""
+              class="user-image mx-2"
+            />
           </div>
           <div class="flex-grow-1 ms-3">
-            <h5 class="mb-0">Sofia</h5>
-            <p class="mb-0">text</p>
+            <h5 class="mb-0">{{ contacts[activeContact].name}}</h5>
+            <p class="mb-0">Ultimo accesso oggi alle ore 12:00</p>
           </div>
           <div>
             <i class="fa-solid fa-magnifying-glass fa-xl me-3"></i>
@@ -87,64 +93,12 @@
         </div>
         <div class="chat-body">
           <div class="message">
-            <div class="box-message sent">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-                aut nam est omnis modi, dolores officia deleniti eos temporibus
-                quisquam ad odit autem. Dolore sequi nemo doloremque alias
-                vitae. Pariatur.
-              </p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message received">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message received">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                sequi nemo doloremque alias vitae. Pariatur.
-              </p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message sent">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-                aut nam est omnis modi, dolores officia deleniti eos temporibus
-                quisquam ad odit autem. Dolore sequi nemo doloremque alias
-                vitae. Pariatur.
-              </p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message received">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message received">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                sequi nemo doloremque alias vitae. Pariatur.
-              </p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message sent">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-                aut nam est omnis modi, dolores officia deleniti eos temporibus
-                quisquam ad odit autem. Dolore sequi nemo doloremque alias
-                vitae. Pariatur.
-              </p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message received">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <div><span>12.00</span></div>
-            </div>
-            <div class="box-message received">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-                sequi nemo doloremque alias vitae. Pariatur.
-              </p>
+            <div
+              v-for="message in contacts[activeContact].messages"
+              :class="message.status == 'sent' ? 'sent' : 'received'"
+              class="box-message"
+            >
+              <p>{{ message.message}}</p>
               <div><span>12.00</span></div>
             </div>
           </div>

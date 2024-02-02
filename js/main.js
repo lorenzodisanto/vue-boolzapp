@@ -23,7 +23,7 @@ createApp({
             },
             {
               date: "10/01/2020 16:15:22",
-              message: "Tutto fatto!",
+              message: "Tutto fatto! Hai portato a spasso il cane?",
               status: "received",
             },
           ],
@@ -168,12 +168,37 @@ createApp({
           ],
         },
       ],
+
+      newMessageSend: {
+        date: "10/01/2020 15:52:00",
+        message: "",
+        status: "sent",
+      },
+
+      newMessageReceived: {
+        date: "10/01/2020 15:52:00",
+        message: "OK!!!",
+        status: "received",
+      },
     };
   },
 
   methods: {
     showChat(index) {
       this.activeContact = index;
+    },
+
+    addNewMessageSend() {
+      const newMessageCopy = { ...this.newMessageSend };
+
+      this.contacts[this.activeContact].messages.push(newMessageCopy);
+      this.newMessageSend.message = "";
+      setTimeout(() => this.addNewMessageReceived(), 1000);
+    },
+
+    addNewMessageReceived() {
+      const newReceivedCopy = { ...this.newMessageReceived };
+      this.contacts[this.activeContact].messages.push(newReceivedCopy);
     },
   },
 

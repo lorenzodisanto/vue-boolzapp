@@ -12,12 +12,17 @@
   justify-content: center;
   align-items: center;
   font-family: "Lato", sans-serif;
-  background-color: #d9dbd5;
+  background: linear-gradient(
+    0deg,
+    rgb(217, 219, 213) 85%,
+    rgb(0, 150, 136) 0%,
+    rgb(0, 150, 136) 0%
+  );
 }
 
 .wrapper {
   height: 95vh;
-  width: 70%;
+  width: 80%;
   display: flex;
 }
 
@@ -43,6 +48,11 @@
 
 h5 {
   color: black;
+  font-size: 1rem;
+}
+
+p {
+  font-size: 0.9rem;
 }
 
 .user-image {
@@ -53,11 +63,31 @@ h5 {
 .contact-notification {
   background-color: #8edafc;
   height: 80px;
+  display: flex;
+  align-items: center;
+}
+.contact-notification a {
+  color: #6b7376;
+  font-size: 0.7rem;
+}
+
+.icon-bell {
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  background-color: white;
+  color: #8edafc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .contact-search {
   background-color: #fcfcfc;
   height: 50px;
+  display: flex;
+  align-items: center;
 }
 
 .contact-list {
@@ -102,7 +132,7 @@ h5 {
 }
 
 .box-message {
-  max-width: 45%;
+  max-width: 60%;
   max-height: 220px;
   border-radius: 10px;
   padding: 10px 10px 0 10px;
@@ -121,11 +151,14 @@ h5 {
   background-color: white;
 }
 
-.box-message span {
+span {
   font-size: 0.7rem;
 }
 
 .input-message {
   background-color: #f3eeea;
+  color: #6b7376;
   height: 70px;
+  display: flex;
+  align-items: center;
 }

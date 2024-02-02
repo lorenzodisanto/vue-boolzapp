@@ -14,6 +14,14 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- Link googlefont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Link Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -49,8 +57,31 @@
           </div>
         </div>
 
-        <div class="contact-notification"></div>
-        <div class="contact-search"></div>
+        <!-- Silenzia notifiche -->
+
+        <div class="contact-notification">
+          <div class="icon-bell">
+            <i class="fa-solid fa-bell-slash fa-xl"></i>
+          </div>
+          <div>
+            <p class="m-0">Ricevi notifiche di nuovi messaggi</p>
+            <a href="#">Attiva notifiche desktop</a>
+          </div>
+        </div>
+
+        <!-- Barra ricerca contatti -->
+        <div class="contact-search">
+          <div class="input-group py-1 px-2">
+            <span class="input-group-text"
+              ><i class="fa-solid fa-magnifying-glass"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Cerca o inizia una nuova chat"
+            />
+          </div>
+        </div>
 
         <!-- Lista Contatti -->
         <div class="contact-list">
@@ -99,11 +130,23 @@
               class="box-message"
             >
               <p>{{ message.message}}</p>
-              <div><span>12.00</span></div>
+              <div><span>12:00</span></div>
             </div>
           </div>
         </div>
-        <div class="input-message"></div>
+        <div class="input-message">
+          <div><i class="fa-regular fa-face-smile fa-xl mx-4"></i></div>
+          <div class="flex-grow-1">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Scrivi un messaggio"
+              v-model="newMessageSend.message"
+              @keyUp.enter="addNewMessageSend()"
+            />
+          </div>
+          <div><i class="fa-solid fa-microphone fa-xl mx-4"></i></div>
+        </div>
       </div>
     </div>
     <!-- JS Bootstrap -->

@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
       activeContact: 0,
+      searchName: "",
 
       contacts: [
         {
@@ -170,13 +171,13 @@ createApp({
       ],
 
       newMessageSend: {
-        date: "10/01/2020 15:52:00",
+        date: "",
         message: "",
         status: "sent",
       },
 
       newMessageReceived: {
-        date: "10/01/2020 15:52:00",
+        date: "",
         message: "OK!!!",
         status: "received",
       },
@@ -193,12 +194,27 @@ createApp({
 
       this.contacts[this.activeContact].messages.push(newMessageCopy);
       this.newMessageSend.message = "";
+      this.newMessageSend.date = this.getCurrentTime();
       setTimeout(() => this.addNewMessageReceived(), 1000);
     },
 
     addNewMessageReceived() {
       const newReceivedCopy = { ...this.newMessageReceived };
       this.contacts[this.activeContact].messages.push(newReceivedCopy);
+      this.newMessageReceived.date = this.getCurrentTime();
+    },
+
+    getCurrentTime() {
+      const now = new Date();
+      return `${now.getHours()}:${now.getMinutes()}`;
+    },
+
+    filteredContacts() {
+      return this.contacts.filter((contact) => {
+        return contact.name
+          .toLowerCase()
+          .includes(this.searchName.toLowerCase());
+      });
     },
   },
 

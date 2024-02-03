@@ -79,6 +79,7 @@
               type="text"
               class="form-control"
               placeholder="Cerca o inizia una nuova chat"
+              v-model="searchName"
             />
           </div>
         </div>
@@ -86,7 +87,10 @@
         <!-- Lista Contatti -->
         <div class="contact-list">
           <ul class="p-0">
-            <li v-for="(contact, index) in contacts" @click="showChat(index)">
+            <li
+              v-for="(contact, index) in filteredContacts()"
+              @click="showChat(index)"
+            >
               <div>
                 <img :src="contact.avatar" alt="" class="user-image" />
               </div>
@@ -130,7 +134,7 @@
               class="box-message"
             >
               <p>{{ message.message}}</p>
-              <div><span>12:00</span></div>
+              <div><span>{{ message.date}}</span></div>
             </div>
           </div>
         </div>

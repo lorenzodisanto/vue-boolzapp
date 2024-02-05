@@ -190,11 +190,11 @@ createApp({
     },
 
     addNewMessageSend() {
+      if (!this.newMessageSend.message) return;
       const newMessageCopy = { ...this.newMessageSend };
-
+      this.newMessageSend.date = this.getCurrentTime();
       this.contacts[this.activeContact].messages.push(newMessageCopy);
       this.newMessageSend.message = "";
-      this.newMessageSend.date = this.getCurrentTime();
       setTimeout(() => this.addNewMessageReceived(), 1000);
     },
 
@@ -210,11 +210,38 @@ createApp({
     },
 
     filteredContacts() {
-      return this.contacts.filter((contact) => {
-        return contact.name
-          .toLowerCase()
-          .includes(this.searchName.toLowerCase());
+      this.contacts = this.contacts.map((contact) => {
+        if (
+          contact.name.toLowerCase().includes(this.searchName.toLowerCase())
+        ) {
+          contact.visible = true;
+        } else {
+          contact.visible = false;
+        }
+        return contact;
       });
+    },
+
+    deleteMessage(i) {
+      this.contacts[this.activeContact].messages.splice(i, 1);
+    },
+
+    getLastAccess(messages) {
+      const sentMessages = messages.filter(
+        (message) => message.status == "sent"
+      );
+      const lastMessage = sentMessages[sentMessages.length - 1];
+      return lastMessage.date;
+    },
+
+    getLastMessage(messages) {
+      const getLastMessage = messages.at(-1);
+      return getLastMessage.message;
+    },
+
+    getLastMessageDate(messages) {
+      const getLastMessage = messages.at(-1);
+      return getLastMessage.date;
     },
   },
 

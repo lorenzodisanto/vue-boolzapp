@@ -80,6 +80,7 @@
               class="form-control"
               placeholder="Cerca o inizia una nuova chat"
               v-model="searchName"
+              @keyUp="filteredContacts()"
             />
           </div>
         </div>
@@ -88,7 +89,8 @@
         <div class="contact-list">
           <ul class="p-0">
             <li
-              v-for="(contact, index) in filteredContacts()"
+              v-for="(contact, index) in contacts"
+              v-show="contact.visible"
               @click="showChat(index)"
             >
               <div>
@@ -96,10 +98,14 @@
               </div>
               <div class="flex-grow-1 ms-3">
                 <h5 class="mb-0">{{ contact.name }}</h5>
-                <p class="mb-0">Ultimo messaggio inviato</p>
+                <p class="mb-0" v-if="contact.messages.length > 0">
+                  {{getLastMessage(contact.messages)}}
+                </p>
               </div>
               <div>
-                <span>12:00</span>
+                <span v-if="contact.messages.length > 0"
+                  >{{ getLastMessageDate(contact.messages)}}</span
+                >
               </div>
             </li>
           </ul>
@@ -118,7 +124,10 @@
           </div>
           <div class="flex-grow-1 ms-3">
             <h5 class="mb-0">{{ contacts[activeContact].name}}</h5>
-            <p class="mb-0">Ultimo accesso oggi alle ore 12:00</p>
+            <p class="mb-0" v-if="contacts[activeContact].messages.length > 0">
+              Ultimo accesso {{
+              getLastAccess(contacts[activeContact].messages)}}
+            </p>
           </div>
           <div>
             <i class="fa-solid fa-magnifying-glass fa-xl me-3"></i>
@@ -129,12 +138,37 @@
         <div class="chat-body">
           <div class="message">
             <div
-              v-for="message in contacts[activeContact].messages"
+              v-for="(message, indexMessage) in contacts[activeContact].messages"
               :class="message.status == 'sent' ? 'sent' : 'received'"
               class="box-message"
             >
-              <p>{{ message.message}}</p>
-              <div><span>{{ message.date}}</span></div>
+              <div><p class="my-0">{{ message.message}}</p></div>
+              <div class="box-message-info">
+                <div><span>{{ message.date}}</span></div>
+                <div class="dropdown">
+                  <button
+                    class="btn-info"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="fa-solid fa-check check-click"></i>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">Info messaggio</a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                        @click="deleteMessage(indexMessage)"
+                        >Cancella messaggio</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>

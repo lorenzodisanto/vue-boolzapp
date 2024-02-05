@@ -30,6 +30,9 @@
       crossorigin="anonymous"
     />
 
+    <!-- luxon cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+
     <!-- Link CSS -->
     <link rel="stylesheet" href="./css/style.css" />
 
@@ -144,7 +147,7 @@
             >
               <div><p class="my-0">{{ message.message}}</p></div>
               <div class="box-message-info">
-                <div><span>{{ message.date}}</span></div>
+                <div><span>{{ formatDate(message.date)}}</span></div>
                 <div class="dropdown">
                   <button
                     class="btn-info"

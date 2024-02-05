@@ -192,17 +192,17 @@ createApp({
 
     addNewMessageSend() {
       if (!this.newMessageSend.message) return;
-      const newMessageCopy = { ...this.newMessageSend };
       this.newMessageSend.date = this.getCurrentTime();
+      const newMessageCopy = { ...this.newMessageSend };
       this.contacts[this.activeContact].messages.push(newMessageCopy);
       this.newMessageSend.message = "";
       setTimeout(() => this.addNewMessageReceived(), 1000);
     },
 
     addNewMessageReceived() {
+      this.newMessageReceived.date = this.getCurrentTime();
       const newReceivedCopy = { ...this.newMessageReceived };
       this.contacts[this.activeContact].messages.push(newReceivedCopy);
-      this.newMessageReceived.date = this.getCurrentTime();
     },
 
     getCurrentTime() {

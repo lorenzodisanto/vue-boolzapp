@@ -137,8 +137,7 @@ p {
   border-radius: 10px;
   padding: 10px 10px 0 10px;
   align-self: flex-start;
-  display: flex;
-  align-items: flex-end;
+
   gap: 10px;
 }
 
@@ -153,6 +152,22 @@ p {
 
 span {
   font-size: 0.7rem;
+}
+
+.box-message-info {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.btn-info {
+  background-color: transparent;
+  border: none;
+  margin-left: 5px;
+}
+
+.check-click:hover {
+  color: #116fbc;
 }
 
 .input-message {

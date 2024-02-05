@@ -1,4 +1,5 @@
 const { createApp } = Vue;
+const dt = luxon.DateTime;
 
 createApp({
   data() {
@@ -206,7 +207,24 @@ createApp({
 
     getCurrentTime() {
       const now = new Date();
-      return `${now.getHours()}:${now.getMinutes()}`;
+
+      const day = now.getDate() < 10 ? "0" + now.getDate() : now.getDate();
+      const month = now.getMonth() < 10 ? "0" + now.getMonth() : now.getMonth();
+      const year =
+        now.getFullYear() < 10 ? "0" + now.getFullYear() : now.getFullYear();
+      const hour = now.getHours() < 10 ? "0" + now.getHours() : now.getHours();
+      const minute =
+        now.getMinutes() < 10 ? "0" + now.getMinutes() : now.getMinutes();
+      const second =
+        now.getSeconds() < 10 ? "0" + now.getSeconds() : now.getSeconds();
+
+      return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+    },
+
+    formatDate(date) {
+      const messageDate = dt.fromFormat(date, "dd/MM/yyyy HH:mm:ss");
+      const messageDateText = messageDate.toLocaleString(dt.TIME_24_SIMPLE);
+      return messageDateText;
     },
 
     filteredContacts() {
@@ -231,7 +249,7 @@ createApp({
         (message) => message.status == "sent"
       );
       const lastMessage = sentMessages[sentMessages.length - 1];
-      return lastMessage.date;
+      return this.formatDate(lastMessage.date);
     },
 
     getLastMessage(messages) {
@@ -241,7 +259,7 @@ createApp({
 
     getLastMessageDate(messages) {
       const getLastMessage = messages.at(-1);
-      return getLastMessage.date;
+      return this.formatDate(getLastMessage.date);
     },
   },
 
